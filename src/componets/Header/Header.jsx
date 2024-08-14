@@ -1,0 +1,127 @@
+import React from 'react';
+import { Container, Row, Col } from "reactstrap";
+import { Link, NavLink } from "react-router-dom";
+import "../../styles/header.css";
+import CarRentalIcon from '@mui/icons-material/CarRental';
+import DateTime from '../UI/DateTime'
+const navLinks = [
+  {
+    path: '/home',
+    display: 'Home'
+  },
+  {
+    path: '/about',
+    display: 'About'
+  },
+  {
+    path: '/services',
+    display: 'Services'
+  },
+  {
+    path: '/cars',
+    display: 'Cars'
+  }
+]
+
+const Header = () => {
+  return <header className="header">
+    <div className="header_top">
+      {/* ===== Heder Top Section ===== */}
+      <Container>
+        <Row>
+          <Col lg='6' md='6' sm='6'>
+            <div className="header_top_left">
+              <span>Need help?</span>
+              <span className="header_top_help">
+                <i className="phone"></i> +506 8570-8117
+              </span>
+            </div>
+          </Col>
+          <Col lg='6' md='6' sm='6'>
+            <div className="header_top_righ d-flex align-items-center justify-content-end gap-3">
+              <Link to="#" className="d-flex aling-items-center gap-1"> login</Link>
+              <Link to="#" className="d-flex aling-items-center gap-1"> Registrer</Link>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </div>
+
+    {/* ===== Heder Middle Section ===== */}
+    <div className="header_middle">
+      <Container>
+        <Row>
+          <Col lg='4' md='3' sm='4' >
+            <div className='logo'>
+              <h1 ><Link to='/home' className="d-flez aling-items-center
+              gap-3">
+                  <CarRentalIcon></CarRentalIcon>
+                  <span>Rent Car<br/>Service </span>
+              </Link></h1>
+            </div>
+          </Col>
+          <Col lg='3' md='3' sm='4'>
+              <div className='header_location d-flex aling-items-center 
+              gap-2'>
+                <span>
+                  <i className="CarRentalIcon"></i>
+                </span>
+                <div className="header_location-content">
+                  <DateTime></DateTime>
+                </div>
+              </div>
+            </Col>
+
+            <Col lg='3' md='3' sm='4'>
+              <div className='header_location d-flex aling-items-center 
+              gap-2'>
+                <span>
+                  <i className="CarRentalIcon"></i>
+                </span>
+                <div className="header_location-content">
+                  
+                </div>
+              </div>
+            </Col>
+
+            <Col lg= '2' md='3' sm='0' className="text-end">
+              <button className='header_btn btn'>
+                <Link to='/cars'>
+                    Search
+                </Link>
+              </button>   
+            </Col>
+        </Row>
+      </Container>
+    </div>
+
+    {/* ===== main navigation ===== */}
+
+    <div className="main_navbar">
+      <Container>
+        <div className='navigation_wrapper d-flex align-items-center justify-content-between'>
+          <span className="mobile_menu">  
+            =
+          </span>
+          <div className="navigation">
+            <div className="menu">
+              {
+                navLinks.map((item,index)=>(
+                  <NavLink to = {item.path} className='nav_item' key={index}> {item.display} </NavLink>
+                ))
+              }
+            </div>
+          </div>
+
+          <div className="nav_right">
+            <div className="search_box">
+              <input type="tex" placeholder="Search Car"/>
+            </div>
+          </div>
+        </div>
+      </Container>
+    </div>
+  </header>
+};
+
+export default Header;
