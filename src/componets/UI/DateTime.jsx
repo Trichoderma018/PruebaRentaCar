@@ -1,29 +1,44 @@
 import * as React from 'react';
+import { useState } from 'react';
 import dayjs from 'dayjs';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { Container, Row, Col } from "reactstrap";
-//Hola
+import TextField from '@mui/material/TextField';  
+import '../../styles/date-time.css'
 
 export default function DateTime() {
-    const [value, setValue] = React.useState(dayjs('2022-04-17T15:30'));
+    const [startDate, setStartDate] = useState(dayjs());
+    const [ setEndDate] = useState(dayjs());
 
+    const now = dayjs();
+    
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={['DateTimePicker', 'DateTimePicker']}>
-                <DateTimePicker
-                    label=""
-                    defaultValue={dayjs('2022-04-17T15:30')}
-                />
+            <Container>
+                <Row>
+                    <Col lg='6' md='4' sm='2'>
+                        <DateTimePicker className= "date-time"
+                            label="Fecha y Hora de Recogida"
+                            name="startDateTime"
+                            onChange={(date) => setStartDate(date)}
+                            minDateTime={now}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </Col>
 
-                <DateTimePicker
-                    label="Controlled picker"
-                    value={value}
-                    onChange={(newValue) => setValue(newValue)}
-                />
-            </DemoContainer>
+                    <Col lg='6' md='4' sm='2'>
+                        <DateTimePicker className= "date-time"
+                            label="Fecha y Hora de Devolucion"
+                            name="startDateTime"
+                            onChange={(date) => setEndDate(date)}
+                            minDateTime={startDate}
+                            renderInput={(params) => <TextField {...params} />}
+                        />
+                    </Col>
+                </Row>
+            </Container>
         </LocalizationProvider>
     );
 }

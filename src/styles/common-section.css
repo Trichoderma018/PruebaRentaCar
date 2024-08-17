@@ -1,0 +1,8 @@
+.common_section{
+    background: linear-gradient(rgb(0,13,107,0.6), rgb(0,13,107,0.6))
+    ,url('../../public/all-images/image-general/imgdriver2.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 130px 0px;
+}

@@ -8,16 +8,14 @@ import StarIcon from '@mui/icons-material/Star';
 import DirectionsCarFilledIcon from '@mui/icons-material/DirectionsCarFilled';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AcUnitIcon from '@mui/icons-material/AcUnit';
+import CheckIcon from '@mui/icons-material/Check';
 
 const CarsDetails = () => {
 
     const { slug } = useParams();
-    console.log("carName from URL:", slug);
 
     const singleCarItem = carData.find((item) => item.carName === slug);
-    console.log(singleCarItem);
-
-
+  
 
     return <Helmet title={singleCarItem.carName}>
         <section>
@@ -43,57 +41,79 @@ const CarsDetails = () => {
                                     </span>
                                 </span>
                             </div>
+
                             <p className="section_description">
                                 {singleCarItem.descipcion}
                             </p>
+                            <div className="datailsCar " style={{ backgroundColor: "#f0f0f0" }}>
+                                <h5 className="mb-0  fw-bold" >Detalles del Vehiculo </h5>
 
-                            <h5 className="mb-0  fw-bold" style={{backgroundColor: "#f0f0f0" }}>Detalles del Vehiculo </h5>
-                            
-                            <div className="d-flex aling-items-center" style={{columnGap: "3rem", backgroundColor: "#f0f0f0" }}>
-                                <span className="d-flex aling-items-center gap-1 section_description">
-                                    <DirectionsCarFilledIcon ></DirectionsCarFilledIcon>{singleCarItem.model}
-                                </span>
+                                <div className="d-flex aling-items-center mt-3" style={{ columnGap: "3rem" }}>
+                                    <span className="d-flex aling-items-center gap-1 section_description">
+                                        <DirectionsCarFilledIcon ></DirectionsCarFilledIcon>{singleCarItem.model}
+                                    </span>
 
-                                <span className="d-flex aling-items-center gap-1 section_description">
-                                    <SettingsIcon></SettingsIcon>{singleCarItem.transmision}
-                                </span>
+                                    <span className="d-flex aling-items-center gap-1 section_description">
+                                        <SettingsIcon></SettingsIcon>{singleCarItem.transmision}
+                                    </span>
 
-                                <span className="d-flex aling-items-center gap-1 section_description">
-                                    <DirectionsCarFilledIcon></DirectionsCarFilledIcon>{singleCarItem.motor}
-                                </span>
-                                
-                                <span className="d-flex aling-items-center gap-1 section_description">
-                                    <AcUnitIcon></AcUnitIcon>{singleCarItem.airconditionar}
-                                </span>
+                                    <span className="d-flex aling-items-center gap-1 section_description">
+                                        <DirectionsCarFilledIcon></DirectionsCarFilledIcon>{singleCarItem.motor}
+                                    </span>
+
+                                    <span className="d-flex aling-items-center gap-1 section_description">
+                                        <AcUnitIcon></AcUnitIcon>{singleCarItem.airconditionar}
+                                    </span>
+                                </div>
+
+                                <div className="d-flex aling-items-center mt-2" style={{ columnGap: "3rem" }}>
+                                    <span className="d-flex aling-items-center gap-1 section_description">
+                                        <DirectionsCarFilledIcon ></DirectionsCarFilledIcon>{singleCarItem.model}
+                                    </span>
+
+                                    <span className="d-flex aling-items-center gap-1 section_description">
+                                        <SettingsIcon></SettingsIcon>{singleCarItem.transmision}
+                                    </span>
+
+                                    <span className="d-flex aling-items-center gap-1 section_description">
+                                        <DirectionsCarFilledIcon></DirectionsCarFilledIcon>{singleCarItem.motor}
+                                    </span>
+
+                                    <span className="d-flex aling-items-center gap-1 section_description">
+                                        <AcUnitIcon></AcUnitIcon>{singleCarItem.airconditionar}
+                                    </span>
+                                </div>
                             </div>
-                            
-                            <div className="d-flex aling-items-center" style={{columnGap: "3rem", backgroundColor: "#f0f0f0" }}>
-                                <span className="d-flex aling-items-center gap-1 section_description">
-                                    <DirectionsCarFilledIcon ></DirectionsCarFilledIcon>{singleCarItem.model}
-                                </span>
+                        </div>
 
-                                <span className="d-flex aling-items-center gap-1 section_description">
-                                    <SettingsIcon></SettingsIcon>{singleCarItem.transmision}
-                                </span>
+                    </Col>
 
-                                <span className="d-flex aling-items-center gap-1 section_description">
-                                    <DirectionsCarFilledIcon></DirectionsCarFilledIcon>{singleCarItem.motor}
-                                </span>
-                                
-                                <span className="d-flex aling-items-center gap-1 section_description">
-                                    <AcUnitIcon></AcUnitIcon>{singleCarItem.airconditionar}
-                                </span>
-                            </div>
-
+                    <Col lg='4' className="extras">
+                        <div className="booking-info mt-5" style={{ backgroundColor: "#f0f0f0" }}>
+                            <h6> Incluido </h6>
+                            <h4 className="fw-bold fs-4"> Tanque Lleno </h4>
+                            <h6 className="mt-4"> <CheckIcon color="success" fontSize="small" /> Tanque lleno gratis</h6>
                         </div>
                     </Col>
 
-                    <Col lg='7' className="">
-                        <div className="booking-info mt-5">
-                            <h5 className="mb-4 fw-bold"> Booking Information </h5>
+                    <Col lg='4' className="extras">
+                        <div className="booking-info mt-5" style={{ backgroundColor: "#f0f0f0" }}>
+                            <h6> Incluido </h6>
+                            <h4 className="fw-bold fs-4"> Paquete de Proteccion Basica </h4>
+                            <h6 className="mt-4"> <CheckIcon color="success" fontSize="small" /> Proteccion Contra colisiones</h6>
+                            <h6></h6>
                         </div>
                     </Col>
 
+                    <Col lg='3' className="extras">
+                        <div className="booking-info mt-5" style={{ backgroundColor: "#f0f0f0" }}>
+                            <h6 className="rent_price">${singleCarItem.price}.00 / Day </h6>
+                            <button className='header_btn btn mt-4' style={{ color: "#f9a826", backgroundColor: "#fff" }}>
+                                    Seleccionar
+                            </button>
+                        
+                        </div>
+                    </Col>
                 </Row>
             </Container>
         </section>

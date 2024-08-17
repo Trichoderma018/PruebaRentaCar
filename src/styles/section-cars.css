@@ -1,0 +1,30 @@
+.section_filter {
+    padding: 0px 0px;
+    background: fff;
+    color: #1E3E70;
+}
+
+.section_filter-left {
+    display: flex;
+    align-items: center;
+}
+
+.section_filter-left span {
+    font-size: 0.9rem;
+}
+
+.header_top_help {
+    display: flex;
+    align-items: center;
+    column-gap: 0.4rem;
+}
+
+.header_top_right {
+    display: flex;
+    align-items: center;
+
+}
+
+.footer_bottom1 {
+    border-top: 3px solid #7c8a972f;
+}

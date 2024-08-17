@@ -1,0 +1,46 @@
+.single_member {
+    border: 1.5px solid #7c8a972d;
+    border-radius: 4px;
+}
+
+.single_member-social{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.1rem;
+    
+}
+
+.single_member-social  i{
+    width: 28px;
+    height: 28px;
+    color:#1E3E70;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    border-radius: 50%;
+    font-size: .9rem;
+    font-weight: 600;
+}
+
+/* Contenedor de imagen del miembro */
+.single_member-img {
+    position: relative; /* Necesario para posicionar los íconos sociales */
+    overflow: hidden; /* Oculta el contenido que sobresale */
+}
+
+/* Imagen del miembro */
+.single_member-img img {
+    width: 100%; /* Asegura que la imagen ocupe todo el contenedor */
+    height: 200px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Mantiene la proporción de la imagen y cubre el contenedor */
+    
+}
+
+.Ourmembers{
+    display:flex;
+    flex-direction: row ;
+    gap:100px;
+    justify-content: center;
+}
