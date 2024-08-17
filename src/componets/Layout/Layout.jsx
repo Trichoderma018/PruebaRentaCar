@@ -3,7 +3,7 @@ import Header from '../Header/Header.jsx'
 import Footer from '../Footer/Footer.jsx'
 import Routes from '../../Routes/routers.jsx'
 
-const Layout = () => {
+const Layout = () =>  {
     return <Fragment>
         <Header />
         <div>
