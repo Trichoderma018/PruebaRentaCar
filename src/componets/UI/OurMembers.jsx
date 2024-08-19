@@ -16,8 +16,8 @@ const OUR_MEMBERS = [
         name: 'Dylan Torres',
         experience: 'Web Developer',
         imgUrl: imgDylan,
-        fbUrl: '#',
-        igUrl: '#',
+        fbUrl: 'https://www.facebook.com/dylan.torres.g.28?mibextid=ZbWKwL',
+        igUrl: 'https://www.instagram.com/dylan_torres28?utm_source=qr&igsh=b3RpY3F6ZWJ3cTdl',
 
     },
     {
@@ -47,14 +47,14 @@ const OurMembers = () => {
                         <div className="single_member-img">
                             <img src={item.imgUrl} alt="" className='w-100 ' />
                             <div className="single_member-social">
-                                <Link to={item.fbUrl}>
+                                <Link target="_blank" to={item.fbUrl}>
                                     <i>
                                         <FacebookIcon />
                                     </i>
 
                                 </Link>
 
-                                <Link to={item.igUrl}>
+                                <Link  target="_blank" to={item.igUrl}>
                                     <i>
                                         <InstagramIcon />
                                     </i>

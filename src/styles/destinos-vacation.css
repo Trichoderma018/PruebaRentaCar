@@ -1,0 +1,28 @@
+.single_vacation {
+    border: 1.5px solid #7c8a972d;
+    border-radius: 4px;
+    background: #fff;
+}
+
+.single_vacation:hover{
+    box-shadow: 12px 12px 12px rgba(1, 1, 1, 0.3);
+}
+
+.single_vacation-img {
+    position: relative; /* Necesario para posicionar los íconos sociales */
+    overflow: hidden; /* Oculta el contenido que sobresale */
+}
+
+/* Imagen del lugar */
+.single_vacation-img img {
+    width: 100%; /* Asegura que la imagen ocupe todo el contenedor */
+    height: 200px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Mantiene la proporción de la imagen y cubre el contenedor */
+}
+
+.PlacesVacations{
+    display:flex;
+    flex-direction: row;
+    gap:50px;
+    justify-content: center;
+}

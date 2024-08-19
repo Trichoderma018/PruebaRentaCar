@@ -12,17 +12,15 @@ const navLinks = [
     path: '/home',
     display: 'Home'
   },
+
   {
     path: '/about',
     display: 'About'
   },
+
   {
     path: '/services',
     display: 'Services'
-  },
-  {
-    path: '/cars',
-    display: 'Cars'
   }
 ]
 
@@ -37,7 +35,7 @@ const Header = () => {
           <div className='logo'>
             <h1 ><Link to='/home' className="d-flez aling-items-center
               gap-2">
-              <span>Rent Car<br/> <h5>Service</h5> </span>
+              <span>Rent Car<br/> <h5 className='Sub_title_logo'>Service</h5> </span>
             </Link></h1>
           </div>
         </Col>
@@ -111,7 +109,8 @@ const Header = () => {
             <div className="menu">
               {
                 navLinks.map((item, index) => (
-                  <NavLink to={item.path} className='nav_item' key={index}> {item.display} </NavLink>
+                  <NavLink to={item.path} className={navClass => navClass.isActive ? "nav_active nav_item" : "nav_item"} 
+                  key={index}> {item.display} </NavLink>
                 ))
               }
             </div>
