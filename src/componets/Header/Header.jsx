@@ -51,8 +51,7 @@ const Header = () => {
 
           <Col lg='6' md='6' sm='6'>
             <div className="header_top_righ d-flex align-items-center justify-content-end gap-3">
-              <Link to="#" className="d-flex aling-items-center gap-1"> login</Link>
-              <Link to="#" className="d-flex aling-items-center gap-1"> Registrer</Link>
+              <Link to="/singin" className="d-flex aling-items-center gap-1"> login</Link>
             </div>
           </Col>
         </Row>

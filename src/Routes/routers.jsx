@@ -5,6 +5,8 @@ import Home from '../pages/Home.jsx'
 import Cars from '../pages/Cars.jsx'
 import CarsDetails from '../pages/CarsDetails.jsx'
 import About from '../pages/About.jsx'
+import SingIn from '../componets/UI/SingIn.jsx'
+import SingUp from '../componets/UI/SingUp.jsx'
 
 const routers = () => {
   return <Routes>
@@ -15,6 +17,10 @@ const routers = () => {
 
     <Route path= '/CarDetail/:slug' element={<CarsDetails />} />
     <Route path= '/about' element={< About/>} />
+
+    <Route path= '/singin' element={< SingIn/>} />
+
+    <Route path= '/singup' element={< SingUp/>} />
 
   </Routes>
 }

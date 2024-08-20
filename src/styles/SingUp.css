@@ -1,0 +1,24 @@
+.signUpBox {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .avatar {
+    margin: 1px;
+    background-color: #f50057; /* 'secondary.main' color */
+  }
+  
+  .form {
+    margin-top: 24px;
+  }
+  
+  .submitButton {
+    margin-top: 24px;
+    margin-bottom: 16px;
+  }
+  
+  .copyright {
+    margin-top: 40px;
+  }
