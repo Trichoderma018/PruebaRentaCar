@@ -1,39 +1,53 @@
-.carousel {
-    width: 50%; 
-    max-width: 800px; 
-    margin: 0 auto; 
-    padding: 20px; 
-}
-
-.slide {
+.carousel_component {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .tweet-embed-container {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
-}
-
-.image-container {
+    padding: 20px;
+    border: 1.5px solid #e0e0e0;
+    border-radius: 8px;
+    max-width:1500px;
+    margin: 0 auto;
+    background-color: #fff;
+  }
+  
+  .single-tweet {
     flex: 1;
     margin-right: 10px;
-}
-
-.image-container img {
+  }
+  
+  .single-tweet img {
     width: 100%;
-    height: auto;
-    border-radius: 10px; 
+    height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
     display: block;
-}
-
-.text-container {
-    flex: 1;
+  }
+  
+  .embed-tweet-right {
+    flex:1;
     text-align: left;
-}
+  }
+  
+  .embed-tweet-right h1 {
+    margin: 2;
+    font-size: 2rem;
+    color: #1E3E70;
 
-.text-container p {
-    margin: 0;
-    padding: 0;
-    font-size: 16px;
-    color: #333; /* Cambia el color del texto según tu diseño */
+  }
+
+
+
+/* Color de las flechas */
+.slick-prev::before, .slick-next::before {
+    width: 40px; /* Ajusta el tamaño de las flechas si es necesario */
+    height: 40px;
+    background-color: rgba(30, 62, 112, 0.5); /* Fondo de las flechas */
+    border-radius: 50%; /* Redondear las flechas */
 }
-  
-  

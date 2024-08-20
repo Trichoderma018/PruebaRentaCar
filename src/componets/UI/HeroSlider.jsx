@@ -3,7 +3,6 @@ import Slider from "react-slick";
 import { Link } from 'react-router-dom';
 import { Container } from 'reactstrap';
 import '../../styles/hero-slides.css';
-//import { Next } from 'react-bootstrap/esm/PageItem';
 
 
 const HeroSlider = () => {

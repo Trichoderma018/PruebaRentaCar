@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Col} from "reactstrap";
+import { Col } from "reactstrap";
 
 import vacation01 from '../../../public/all-images/image-general/vacation01.jpg'
 import vacation02 from '../../../public/all-images/image-general/vacation02.jpg'

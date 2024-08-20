@@ -33,7 +33,7 @@ const Home = () => {
     <div>
       <Container>
         <Row>
-          <Col>
+          <Col lg='12'>
             <section className='Carousel_section'>
               <CarouselComponent/>
             </section>

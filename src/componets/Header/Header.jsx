@@ -20,7 +20,7 @@ const navLinks = [
   },
 
   {
-    path: '/services',
+    path: '/serviceslist',
     display: 'Services'
   }
 ]
@@ -84,7 +84,7 @@ const Header = () => {
             </div>
           </Col>
 
-          <Col lg='1' md='3' sm='0' className="text-end">
+          <Col lg='2' md='3' sm='0' className="text-end">
             <button className='header_btn btn'>
               <Link to='/cars'>
                 Search
