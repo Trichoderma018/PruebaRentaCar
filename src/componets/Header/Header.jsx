@@ -59,7 +59,6 @@ const Header = () => {
     </div>
 
     {/* ===== Heder Middle Section ===== */}
-
     <div className="header_middle">
       <Container>
       <Checkbox className='CheckBox' {...label} defaultChecked />
@@ -97,7 +96,6 @@ const Header = () => {
     </div>
 
     {/* ===== main navigation ===== */}
-
     <div className="main_navbar">
       <Container>
         <div className='navigation_wrapper d-flex align-items-center justify-content-between'>
