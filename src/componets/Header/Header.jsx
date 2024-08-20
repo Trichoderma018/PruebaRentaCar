@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import "../../styles/header.css";
 import DateTime from '../UI/DateTime'
 import Checkbox from '@mui/material/Checkbox';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
@@ -30,7 +31,6 @@ const Header = () => {
       {/* ===== Heder Top Section ===== */}
       <Container>
         <Row>
-          
         <Col lg='2' md='3' sm='4' >
           <div className='logo'>
             <h1 ><Link to='/home' className="d-flez aling-items-center
@@ -51,8 +51,7 @@ const Header = () => {
 
           <Col lg='6' md='6' sm='6'>
             <div className="header_top_righ d-flex align-items-center justify-content-end gap-3">
-              <Link to="#" className="d-flex aling-items-center gap-1"> login</Link>
-              <Link to="#" className="d-flex aling-items-center gap-1"> Registrer</Link>
+              <Link to="/singin" className="d-flex aling-items-center gap-1"> <AccountCircleIcon/>login</Link>
             </div>
           </Col>
         </Row>
