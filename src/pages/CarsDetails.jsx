@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import carData from '../data/carData.js';
+import React, { useState, useEffect } from 'react';
 import { Container, Col, Row } from "reactstrap";
 import Helmet from "../componets/Helmet/HElmet.jsx";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { fetchCarData } from '../data/carData'; // Asegúrate de importar la función
 
+// Importa los íconos
 import StarIcon from '@mui/icons-material/Star';
 import DirectionsCarFilledIcon from '@mui/icons-material/DirectionsCarFilled';
 import SettingsIcon from '@mui/icons-material/Settings';
@@ -19,106 +19,141 @@ import CheckIcon from '@mui/icons-material/Check';
 
 const CarsDetails = () => {
 
-    const { slug } = useParams();
+    const { modelo } = useParams();
+    const [car, setCar] = useState(null);
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(true);
 
-    const singleCarItem = carData.find((item) => item.marca === slug);
-  
+    useEffect(() => {
+        
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                const allCars = await fetchCarData();
+                const carItem = allCars.find(item => item.modelo === modelo);
+                if (carItem) {
+                    setCar(carItem);
+                } else {
+                    setError('Automóvil no encontrado');
+                }
+            } catch (error) {
+                setError('Error al cargar los datos.');
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    return  <Helmet title={singleCarItem.marca}>
-    <section>
-        <Container>
-            <Row>
-                <Col lg='6'>
-                    <img src={singleCarItem.imgUrl} alt={singleCarItem.marca} className="w-100" />
-                </Col>
-                <Col lg='5'>
-                    <div className="car_info">
-                        <h2 className="section_title">{singleCarItem.marca}</h2>
+        fetchData();
+    }, [modelo]);
 
-                        <div className="d-flex align-items-center gap-5 mb-4 mt-3">
-                            <h6 className="rent_price fw-bold fs-4">${singleCarItem.price}.00 / Day </h6>
-                            <span className="d-flex align-items-center gap-2">
-                                <span style={{ color: "#f9a826" }}>
-                                    {[...Array(5)].map((_, index) => (
-                                        <StarIcon key={index} fontSize="small" />
-                                    ))}
-                                </span>
-                            </span>
-                        </div>
+    if (loading) {
+        return <p>Cargando...</p>;
+    }
 
-                        <p className="section_description">
-                            {singleCarItem.descipcion}
-                        </p>
-                        <div className="detailsCar">
-                            <h5 className="mb-0 fw-bold">Detalles del Vehículo</h5>
+    if (error) {
+        return <p>{error}</p>;
+    }
 
-                            <div className="icon-grid">
-                                <div className="icon-item">
-                                    <DirectionsCarFilledIcon /> {singleCarItem.model}
-                                </div>
-                                <div className="icon-item">
-                                    <SettingsIcon /> {singleCarItem.transmision}
-                                </div>
-                                <div className="icon-item">
-                                    <EvStationIcon /> {singleCarItem.categoria}
-                                </div>
-                                <div className="icon-item">
-                                    <AcUnitIcon /> {singleCarItem.aire_acond}
+    if (!car) {
+        return <p>No se encontraron detalles para este automóvil.</p>;
+    }
+
+    return (
+        <Helmet title={car.marca}>
+            <section>
+                <Container>
+                    <Row>
+                        <Col lg='6'>
+                            <img src={car.ruta_img} alt={car.marca} className="w-100" />
+                        </Col>
+                        <Col lg='5'>
+                            <div className="car_info">
+                                <h2 className="section_title">{car.marca}</h2>
+
+                                <div className="d-flex align-items-center gap-5 mb-4 mt-3">
+                                    <h6 className="rent_price fw-bold fs-4">${car.tarifa_alquiler}.00 / Day </h6>
+                                    <span className="d-flex align-items-center gap-2">
+                                        <span style={{ color: "#f9a826" }}>
+                                            {[...Array(5)].map((_, index) => (
+                                                <StarIcon key={index} fontSize="small" />
+                                            ))}
+                                        </span>
+                                    </span>
                                 </div>
 
-                                <div className="icon-item">
-                                    <PersonIcon /> {singleCarItem.pasajeros}
-                                </div>
-                                <div className="icon-item">
-                                    <LuggageIcon /> {singleCarItem.capacidad_maletas}
-                                </div>
-                                <div className="icon-item">
-                                    <DirectionsCarFilledIcon /> {singleCarItem.cant_puertas}
-                                </div>
-                                <div className="icon-item">
-                                    <BuildCircleIcon /> {singleCarItem.potencia_motor}
-                                </div>
+                                <p className="section_description">
+                                    {car.descripcion}
+                                </p>
+                                <div className="detailsCar">
+                                    <h5 className="mb-0 fw-bold">Detalles del Vehículo</h5>
 
-                                <div className="icon-item">
-                                    <GarageIcon /> {singleCarItem.tipo_vehiculo}
-                                </div>
-                                <div className="icon-item">
-                                    <ContactEmergencyIcon /> {singleCarItem.edad_minima}
+                                    <div className="icon-grid">
+                                        <div className="icon-item">
+                                            <DirectionsCarFilledIcon /> {car.modelo}
+                                        </div>
+                                        <div className="icon-item">
+                                            <SettingsIcon /> {car.transmision}
+                                        </div>
+                                        <div className="icon-item">
+                                            <EvStationIcon /> {car.categoria}
+                                        </div>
+                                        <div className="icon-item">
+                                            <AcUnitIcon /> {car.aire_acondicionado}
+                                        </div>
+
+                                        <div className="icon-item">
+                                            <PersonIcon /> {car.pasajeros}
+                                        </div>
+                                        <div className="icon-item">
+                                            <LuggageIcon /> {car.capacidad_maletas}
+                                        </div>
+                                        <div className="icon-item">
+                                            <DirectionsCarFilledIcon /> {car.cant_puertas}
+                                        </div>
+                                        <div className="icon-item">
+                                            <BuildCircleIcon /> {car.potencia_motor}
+                                        </div>
+
+                                        <div className="icon-item">
+                                            <GarageIcon /> {car.tipo_vehiculo}
+                                        </div>
+                                        <div className="icon-item">
+                                            <ContactEmergencyIcon /> {car.edad_minima}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </Col>
+                        </Col>
 
-                <Col lg='4' className="extras">
-                    <div className="booking-info mt-5" style={{ backgroundColor: "#f0f0f0" }}>
-                        <h6>Incluido</h6>
-                        <h4 className="fw-bold fs-4">Tanque Lleno</h4>
-                        <h6 className="mt-4"><CheckIcon color="success" fontSize="small" /> Tanque lleno gratis</h6>
-                    </div>
-                </Col>
+                        <Col lg='4' className="extras">
+                            <div className="booking-info mt-5" style={{ backgroundColor: "#f0f0f0" }}>
+                                <h6>Incluido</h6>
+                                <h4 className="fw-bold fs-4">Tanque Lleno</h4>
+                                <h6 className="mt-4"><CheckIcon color="success" fontSize="small" /> Tanque lleno gratis</h6>
+                            </div>
+                        </Col>
 
-                <Col lg='4' className="extras">
-                    <div className="booking-info mt-5" style={{ backgroundColor: "#f0f0f0" }}>
-                        <h6>Incluido</h6>
-                        <h4 className="fw-bold fs-4">Paquete de Protección Básica</h4>
-                        <h6 className="mt-4"><CheckIcon color="success" fontSize="small" /> Protección contra colisiones</h6>
-                    </div>
-                </Col>
+                        <Col lg='4' className="extras">
+                            <div className="booking-info mt-5" style={{ backgroundColor: "#f0f0f0" }}>
+                                <h6>Incluido</h6>
+                                <h4 className="fw-bold fs-4">Paquete de Protección Básica</h4>
+                                <h6 className="mt-4"><CheckIcon color="success" fontSize="small" /> Protección contra colisiones</h6>
+                            </div>
+                        </Col>
 
-                <Col lg='3' className="extras">
-                    <div className="booking-info mt-5" style={{ backgroundColor: "#f0f0f0" }}>
-                        <h6 className="rent_price">${singleCarItem.price}.00 / Day</h6>
-                        <button className='header_btn btn mt-4' style={{ color: "#f9a826", backgroundColor: "#fff" }}>
-                             <Link to={`/serviceslist`}>Seleccionar</Link>
-                        </button>
-                    </div>
-                </Col>
-            </Row>
-        </Container>
-    </section>
-</Helmet>
-
+                        <Col lg='3' className="extras">
+                            <div className="booking-info mt-5" style={{ backgroundColor: "#f0f0f0" }}>
+                                <h6 className="rent_price">${car.tarifa_alquiler}.00 / Day</h6>
+                                <button className='header_btn btn mt-4' style={{ color: "#f9a826", backgroundColor: "#fff" }}>
+                                    <Link to={`/serviceslist`}>Seleccionar</Link>
+                                </button>
+                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </section>
+        </Helmet>
+    );
 };
 
 export default CarsDetails;

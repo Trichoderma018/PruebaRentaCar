@@ -1,35 +1,61 @@
-import React, { useState } from 'react';
-import carData from '../data/carData.js';
+import React, { useState, useEffect } from 'react';
+import { fetchCarData } from '../data/carData'; // Importa las funciones necesarias
 import CarItem from '../componets/UI/CarItem.jsx';
 import { FormGroup, Label, Input, Container, Row, Col } from "reactstrap";
-import '../styles/section-cars.css'
+import '../styles/section-cars.css';
 import TuneIcon from '@mui/icons-material/Tune';
-
-
-
+import { useLocation } from 'react-router-dom';
 
 const Cars = () => {
-    // Estado para los filtros
+    // Estados para los filtros y datos
     const [transmision, setTransmision] = useState('');
     const [pasajeros, setPasajeros] = useState('');
     const [tipo_vehiculo, setTipoVeh] = useState('');
-    const [categoria, setCategoria] = useState('');
-    const [filteredCars, setFilteredCars] = useState(carData);
+    const [tipo_gasolina, settipo_gasolina] = useState('');
+    const [allCars, setAllCars] = useState([]); // Guarda todos los autos aquí
+    const [filteredCars, setFilteredCars] = useState([]);
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(true);
+    const query = new URLSearchParams(useLocation().search); // Obtén los parámetros de consulta
+    const localName = query.get('localName'); // Lee el parámetro localName
+
+
+     // Cargar los datos de la API cuando se monta el componente
+     useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                if (localName) {
+                    const data = await fetchCarData(localName); // Usa localName del contexto
+                    setAllCars(data);
+                    setFilteredCars(data); // Configura los datos obtenidos
+                } else {
+                    setError('Por favor, selecciona un lugar.');
+                }
+            } catch (error) {
+                setError('Error al cargar los datos.');
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, [localName]); // Ejecutar cuando localName cambie
 
     // Función para aplicar los filtros
     const applyFilters = () => {
         // Verificar si al menos un filtro está seleccionado
-        if (!transmision && !pasajeros && !tipo_vehiculo && !categoria) {
+        if (!transmision && !pasajeros && !tipo_vehiculo && !tipo_gasolina) {
             setError('Por favor, seleccione al menos un filtro.');
             return;
         }
 
         setError('');
 
-        // Filtrar los autos según los valores seleccionados
-        let filtered = carData;
+        // Obtener los datos cargados
+        let filtered = [...allCars];
 
+        // Filtrar los autos según los valores seleccionados
         if (transmision) {
             filtered = filtered.filter(car => car.transmision === transmision);
         }
@@ -42,8 +68,8 @@ const Cars = () => {
             filtered = filtered.filter(car => car.tipo_vehiculo === tipo_vehiculo);
         }
 
-        if (categoria) {
-            filtered = filtered.filter(car => car.categoria === categoria);
+        if (tipo_gasolina) {
+            filtered = filtered.filter(car => car.tipo_gasolina === tipo_gasolina);
         }
 
         setFilteredCars(filtered);
@@ -54,11 +80,11 @@ const Cars = () => {
         setTransmision('');
         setPasajeros('');
         setTipoVeh('');
-        setCategoria('');
-        setFilteredCars(carData); // Restablece la lista de autos a la original
+        settipo_gasolina('');
+        setFilteredCars(allCars); // Restablece la lista de autos a la original
         setError('');
     };
-
+   
     return (
         <section>
             <div className="section_filter mb-4">
@@ -84,7 +110,7 @@ const Cars = () => {
                                 >
                                     <option value="">Seleccione una opción</option>
                                     <option value="Manual">Manual</option>
-                                    <option value="Automatico">Automatico</option>
+                                    <option value="Automatica">Automatica</option>
                                 </Input>
                             </FormGroup>
                         </Col>
@@ -122,19 +148,19 @@ const Cars = () => {
                             </FormGroup>
                         </Col>
                         <Col lg='2'>
-                            <Label for="categoriaSelect">Categoria</Label>
+                            <Label for="tipo_gasolinaSelect">Combustible</Label>
                             <FormGroup>
                                 <Input
                                     type="select"
-                                    name="categoria"
-                                    id="categoriaSelect"
-                                    value={categoria}
-                                    onChange={e => setCategoria(e.target.value)}
+                                    name="tipo_gasolina"
+                                    id="tipo_gasolinaSelect"
+                                    value={tipo_gasolina}
+                                    onChange={e => settipo_gasolina(e.target.value)}
                                 >
                                     <option value="">Seleccione una opción</option>
                                     <option value="Gasolina">Gasolina</option>
-                                    <option value="Hibrido">Hibrido</option>
-                                    <option value="Electrico">Electrico</option>
+                                    <option value="Super">Super</option>
+                                    <option value="Electricidad">Electricidad</option>
                                 </Input>
                             </FormGroup>
                         </Col>
@@ -161,9 +187,15 @@ const Cars = () => {
                         <h6 className="section_subtitle">Nuestros Autos</h6>
                         <h2 className="section_title">El Mejor precio Aquí</h2>
                     </Col>
-                    {filteredCars.slice(0, 6).map(item => (
-                        <CarItem item={item} key={item.id} />
-                    ))}
+                    {loading ? (
+                        <p>Cargando...</p>
+                    ) : error ? (
+                        <p>{error}</p>
+                    ) : (
+                        filteredCars.slice(0, 6).map(item => (
+                            <CarItem item={item} key={item.placa} />
+                        ))
+                    )}
                 </Row>
             </Container>
         </section>
