@@ -29,6 +29,7 @@ const Cars = () => {
                     const data = await fetchCarData(localName); // Usa localName del contexto
                     setAllCars(data);
                     setFilteredCars(data); // Configura los datos obtenidos
+                    localStorage.setItem('allCars', JSON.stringify(data));
                 } else {
                     setError('Por favor, selecciona un lugar.');
                 }
@@ -192,7 +193,7 @@ const Cars = () => {
                     ) : error ? (
                         <p>{error}</p>
                     ) : (
-                        filteredCars.slice(0, 6).map(item => (
+                        filteredCars.map(item => (
                             <CarItem item={item} key={item.placa} />
                         ))
                     )}

@@ -11,24 +11,24 @@ const Places_Vacations = [
     {
         name: 'Hotel Bahia Ballena',
         imgUrl: vacation01,
-        descripcion: 'Lorem ipsum dolor sit amet.',
+        descripcion: 'Ubicado en la costa sur de Costa Rica, el Hotel Bahia Ballena ofrece vistas impresionantes al océano y acceso directo a playas de arena blanca. Ideal para unas vacaciones relajantes en un entorno natural.',
     },
     {
         name: 'Hotel Riu',
         imgUrl: vacation02,
-        descripcion: 'Lorem ipsum dolor sit amet.',
+        descripcion: 'El Hotel Riu es un resort todo incluido en la hermosa playa de Guanacaste. Disfruta de una amplia gama de actividades, piscinas, restaurantes y entretenimiento para toda la familia en un ambiente lujoso.',
 
     },
     {
         name: 'Hotel Volcan Irazu',
         imgUrl: vacation03,
-        descripcion: 'Lorem ipsum dolor sit amet.',
+        descripcion: 'Situado cerca del majestuoso Volcán Irazú, este hotel ofrece una experiencia única con impresionantes vistas del volcán y la naturaleza circundante. Perfecto para explorar el parque nacional y disfrutar de la tranquilidad.',
 
     },
     {
         name: 'Puntarenas',
         imgUrl: vacation04,
-        descripcion: 'Lorem ipsum dolor sit amet.',
+        descripcion: 'Puntarenas es una ciudad costera vibrante con hermosas playas y una rica vida cultural. Disfruta de actividades acuáticas, deliciosa gastronomía local y un ambiente relajado en esta popular localidad.'
 
     },
 ];

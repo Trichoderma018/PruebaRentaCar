@@ -40,13 +40,13 @@ const Footer = () => {
             </div>
 
             <p className="footer_logo-content">
-              Lorem ipsum dolor sit amet consectetur, 
-              adipisicing elit.
-              Qui provident, cum vel quia accusamus 
-              aperiam consequuntur
-              natus voluptas vitae placeat sint hic 
-              suscipit voluptatem
-              nesciunt ex eum animi officia asperiores.
+            Somos la empresa líder en alquiler de vehículos
+             en Costa Rica, ofreciendo un servicio completo a 
+             precios razonables. Nos destacamos por la 
+             transparencia, sin cargos ocultos, y con 
+             la opción de coberturas sin deducible,
+             brindando a nuestros clientes la 
+             tranquilidad que necesitan en cada viaje
             </p>
           </Col>
 

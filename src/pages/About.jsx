@@ -23,16 +23,18 @@ const About = () => {
                     <Col lg='6' md='6' sm='12'>
                         <div className="about_page-content">
                             <h2 className="section_title">Comprometidos con las soluciones de viaje seguro para nuestros clientes</h2>
-                            <p className="section_description">Lorem ipsum dolor sit amet,
-                                consectetur adipisicing elit. Quos eaque perspiciatis totam iste
-                                accusantium tempore porro, perferendis quis facere quas excepturi pariatur
-                                officiis inventore vitae, expedita voluptatibus quaerat ut? Saepe?
+                            <p className="section_description">  En Renta Car Service, nos dedicamos a ofrecer una experiencia de alquiler 
+                                de vehículos sin igual, adaptada a las necesidades de cada cliente. 
+                                Con años de experiencia en la industria, 
+                                hemos perfeccionado nuestros servicios para garantizar que tu viaje sea seguro, 
+                                cómodo y libre de preocupaciones.
                             </p>
 
-                            <p className="section_description">Lorem ipsum dolor sit amet,
-                                consectetur adipisicing elit. Quos eaque perspiciatis totam iste
-                                accusantium tempore porro, perferendis quis facere quas excepturi pariatur
-                                officiis inventore vitae, expedita voluptatibus quaerat ut? Saepe?
+                            <p className="section_description">Nuestro objetivo es brindar soluciones de movilidad eficientes y accesibles, 
+                                asegurándonos de que cada cliente tenga el vehículo perfecto para sus necesidades. 
+                                Creemos que cada viaje es único, por lo que ofrecemos una amplia gama de vehículos y 
+                                paquetes de protección que se adaptan a cada situación, ya sea un viaje de negocios, 
+                                unas vacaciones familiares o un escape de fin de semana.
                             </p>
                         </div>
                     </Col>

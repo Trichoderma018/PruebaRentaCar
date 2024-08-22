@@ -11,37 +11,32 @@ const AboutSection = () => {
                         <h4 className="section_subtitle">About Us</h4>
                         <h2 className="section_title">Welcom to Rent a Car</h2>
                         <p className="section_description">
-                            Lorem, ipsum dolor sit amet consectetur
-                            adipisicing elit.
-                            Eligendi rerum nisi cum adipisci, dicta neque a corrupti.
-                            Obcaecati, inventore ad? Consectetur amet sequi suscipit
-                            laborum debitis repellendus enim harum consequuntur!
+                            En Renta Car Service, nos enorgullece ofrecerte una experiencia de
+                            alquiler de vehículos inigualable. Ya sea que necesites un automóvil
+                            para un viaje de negocios, unas vacaciones familiares, o una escapada
+                            de fin de semana, estamos aquí para asegurarnos de que encuentres el
+                            vehículo perfecto que se adapte a tus necesidades. Con un enfoque en la
+                            seguridad, la comodidad y la satisfacción del cliente, nuestro equipo
+                            está dedicado a hacer que cada viaje sea tan sencillo y placentero como sea posible.
                         </p>
                         <div className="about_section-item d-flex aling-items-center">
                             <p className="section_description d-flex aling-items-center gap-2">
-                            Lorem, ipsum dolor sit amet consectetur
-                            adipisicing elit.
-                        
+                                ✓ Flota diversa y moderna para todas tus necesidades de viaje
                             </p>
 
                             <p className="section_description d-flex aling-items-center gap-2">
-                            Lorem, ipsum dolor sit amet consectetur
-                            adipisicing elit.
-                            
+                                ✓ Paquetes de protección diseñados para tu tranquilidad.
+
                             </p>
                         </div>
 
                         <div className="about_section-item d-flex aling-items-center">
                             <p className="section_description d-flex aling-items-center gap-2">
-                            Lorem, ipsum dolor sit amet consectetur
-                            adipisicing elit.
-                         
+                                ✓ Servicio al cliente dedicado y siempre disponible.
                             </p>
 
                             <p className="section_description d-flex aling-items-center gap-2">
-                            Lorem, ipsum dolor sit amet consectetur
-                            adipisicing elit.
-                          
+                                ✓ Precios competitivos y sin sorpresas.
                             </p>
                         </div>
 

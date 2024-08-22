@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Container, Col, Row } from "reactstrap";
 import Helmet from "../componets/Helmet/HElmet.jsx";
 import { useParams, Link } from "react-router-dom";
-import { fetchCarData } from '../data/carData'; // Asegúrate de importar la función
+import { fetchCarData } from '../data/carData'; 
 
 // Importa los íconos
 import StarIcon from '@mui/icons-material/Star';
@@ -17,34 +17,37 @@ import ContactEmergencyIcon from '@mui/icons-material/ContactEmergency';
 import GarageIcon from '@mui/icons-material/Garage';
 import CheckIcon from '@mui/icons-material/Check';
 
-const CarsDetails = () => {
 
-    const { modelo } = useParams();
+const CarsDetails = () => {
+    const { marca } = useParams();
     const [car, setCar] = useState(null);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        
-        const fetchData = async () => {
-            setLoading(true);
-            try {
-                const allCars = await fetchCarData();
-                const carItem = allCars.find(item => item.modelo === modelo);
+        setLoading(true);
+        try {
+            const allCars = JSON.parse(localStorage.getItem('allCars'));
+            if (allCars) {
+
+                console.log('Datos de coches en localStorage:', allCars); // Verifica los datos almacenados
+                console.log('Buscando coche con modelo:', marca); // Verifica el modelo que estás buscando
+                
+                const carItem = allCars.find(item => item.marca === marca);
                 if (carItem) {
                     setCar(carItem);
                 } else {
                     setError('Automóvil no encontrado');
                 }
-            } catch (error) {
-                setError('Error al cargar los datos.');
-            } finally {
-                setLoading(false);
+            } else {
+                setError('No se encontraron datos de autos.');
             }
-        };
-
-        fetchData();
-    }, [modelo]);
+        } catch (error) {
+            setError('Error al cargar los datos.');
+        } finally {
+            setLoading(false);
+        }
+    }, [marca]);
 
     if (loading) {
         return <p>Cargando...</p>;
@@ -95,10 +98,10 @@ const CarsDetails = () => {
                                             <SettingsIcon /> {car.transmision}
                                         </div>
                                         <div className="icon-item">
-                                            <EvStationIcon /> {car.categoria}
+                                            <EvStationIcon /> {car.tipo_gasolina}
                                         </div>
                                         <div className="icon-item">
-                                            <AcUnitIcon /> {car.aire_acondicionado}
+                                            <AcUnitIcon /> {car.aire_acond}
                                         </div>
 
                                         <div className="icon-item">
