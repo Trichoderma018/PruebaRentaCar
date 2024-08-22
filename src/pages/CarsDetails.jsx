@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Container, Col, Row } from "reactstrap";
 import Helmet from "../componets/Helmet/HElmet.jsx";
 import { useParams, Link } from "react-router-dom";
-import { fetchCarData } from '../data/carData'; 
 
 // Importa los íconos
 import StarIcon from '@mui/icons-material/Star';

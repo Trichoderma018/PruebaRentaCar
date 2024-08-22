@@ -25,7 +25,7 @@ const CarItem = (props) => {
                         <span className="d-flex aling-items-center gap-1"> {transmision}</span>
                     </div>
                     <button className="w-50 car_item-btn car_btn-rent">
-                        <Link to={`/cars/${marca}`}>Rent</Link>
+                        <Link to={`/serviceslist`}>Rent</Link>
                     </button>
 
                     <button className="w-50 car_item-btn car_btn-details">

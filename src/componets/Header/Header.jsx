@@ -18,11 +18,6 @@ const navLinks = [
     path: '/about',
     display: 'About'
   },
-
-  {
-    path: '/serviceslist',
-    display: 'Services'
-  }
 ]
 
 const Header = () => {

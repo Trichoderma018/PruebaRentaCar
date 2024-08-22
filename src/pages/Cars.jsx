@@ -5,8 +5,9 @@ import { FormGroup, Label, Input, Container, Row, Col } from "reactstrap";
 import '../styles/section-cars.css';
 import TuneIcon from '@mui/icons-material/Tune';
 import { useLocation } from 'react-router-dom';
-
+import HeaderNavigation from '../componets/UI/HeaderNavigation.jsx';
 const Cars = () => {
+    
     // Estados para los filtros y datos
     const [transmision, setTransmision] = useState('');
     const [pasajeros, setPasajeros] = useState('');
@@ -91,6 +92,9 @@ const Cars = () => {
             <div className="section_filter mb-4">
                 <Container>
                     <Row>
+                        <Col lg='12'>
+                            <HeaderNavigation/>
+                        </Col>
                         <h1 className="section_title mb-5"> Elige tu Vehiculo</h1>
                         <Col lg='2'>
                             <div className="section_filter-left">

@@ -7,6 +7,7 @@ import About from '../pages/About.jsx'
 import ServicesList from '../pages/ServicesList.jsx'
 import SingIn from '../componets/UI/SingIn.jsx'
 import SingUp from '../componets/UI/SingUp.jsx'
+import Total from '../componets/UI/Total.jsx'
 
 const routers = () => {
   return <Routes>
@@ -19,6 +20,7 @@ const routers = () => {
     <Route path= '/about' element={< About/>} />
     <Route path= '/singin' element={<SingIn/>} />
     <Route path= '/singup' element={<SingUp/>} />
+    <Route path= '/total' element={<Total/>} />
 
   </Routes>
 };

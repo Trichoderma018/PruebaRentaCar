@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import dayjs from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
@@ -10,7 +9,7 @@ import '../../styles/date-time.css'
 
 export default function DateTime() {
     const [startDate, setStartDate] = useState(dayjs());
-    const [ setEndDate] = useState(dayjs());
+    const [ endDate, setEndDate] = useState(dayjs());
 
     const now = dayjs();
     

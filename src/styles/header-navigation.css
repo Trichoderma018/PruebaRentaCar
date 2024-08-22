@@ -1,0 +1,25 @@
+.header-navigation {
+    background-color: #282c34;
+    padding: 10px 0;
+    color: #fff;
+}
+
+.menu {
+    display: flex;
+    align-items: center;
+    column-gap: 3.7rem;
+}
+
+.nav_item_h {
+    color: #fff;
+    text-decoration: none;
+}
+
+.nav_item_h:hover {
+
+    color: #f9a826;
+}
+
+.nav_active_h {
+    color: #f9a826;
+}
