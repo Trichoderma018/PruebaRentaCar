@@ -1,0 +1,72 @@
+.client-card-form {
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.client-card-form h2 {
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    color: #333333;
+    text-align: center;
+}
+
+.client-card-form .form-group {
+    margin-bottom: 15px;
+}
+
+.client-card-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #555555;
+}
+
+.client-card-form input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.client-card-form input:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+.client-card-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #1E3E70 ;
+    color: #f9a826;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.client-card-form button:hover {
+    background-color: #f9a826;
+    color: #1E3E70;
+
+}
+
+.client-card-form .error {
+    color: #ff4d4d;
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.client-card-form .success {
+    color: #28a745;
+    font-size: 0.9em;
+    margin-top: 10px;
+    text-align: center;
+}

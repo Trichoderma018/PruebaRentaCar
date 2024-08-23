@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormGroup, Label, Input, Container, Row, Col } from "reactstrap";
+import { FormGroup, Input, Container, Row, Col } from "reactstrap";
 import { Link, NavLink } from "react-router-dom";
 import "../../styles/header.css";
 import DateTime from '../UI/DateTime'
@@ -18,6 +18,7 @@ const navLinks = [
     path: '/about',
     display: 'About'
   },
+
 ]
 
 const Header = () => {
@@ -63,10 +64,8 @@ const Header = () => {
     {/* ===== Heder Middle Section ===== */}
     <div className="header_middle">
       <Container>
-        <Checkbox className='CheckBox' {...label} defaultChecked />
-        <label>Mismo lugar de Devolucion</label>
         <Row>
-          <Col lg='4' md='2' sm='2'>
+          <Col lg='6' md='2' sm='2'>
             <FormGroup>
               <Input
                 type="select"
@@ -83,16 +82,7 @@ const Header = () => {
             </FormGroup>
           </Col>
 
-          <Col lg='6' md='4' sm='3'>
-            <div className='header_location d-flex aling-items-center 
-              gap-2'>
-              <div className="header_location-content">
-                <DateTime></DateTime>
-              </div>
-            </div>
-          </Col>
-
-          <Col lg='2' md='3' sm='0' className="text-end">
+          <Col lg='6' md='3' sm='0' className="text-end">
             <button className='header_btn btn'>
               <Link to={`/cars?localName=${encodeURIComponent(localName)}`}>
                 Search

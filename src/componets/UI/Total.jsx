@@ -1,13 +1,26 @@
 import React, { useState } from 'react';
-import { Col, Row, Card, CardBody, CardTitle, CardText, Button, Container } from 'reactstrap';
+import { Col, Row, Container } from 'reactstrap';
 import visaLogo from '../../../public/all-images/image-general/visaLogo.png';
 import mastercardLogo from '../../../public/all-images/image-general/mastercardLogo.png';
 import amexLogo from '../../../public/all-images/image-general/amexLogo.png';
 import '../../styles/total.css'; // Importa el archivo CSS
 import HeaderNavigation from '../UI/HeaderNavigation.jsx';
 import Factura from '../UI/Factura.jsx';
+import DateTime from '../UI/DateTime.jsx';
+import ClientCard from '../UI/ClientCard.jsx';
 
 const Total = () => {
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
+
+    const handleStartDateChange = (date) => {
+        setStartDate(date);
+    };
+
+    const handleEndDateChange = (date) => {
+        setEndDate(date);
+    };
+
     const [cardNumber, setCardNumber] = useState('');
     const [expiryDate, setExpiryDate] = useState('');
     const [cvv, setCvv] = useState('');
@@ -71,9 +84,35 @@ const Total = () => {
 
     return (
         <Container>
+            
+            <Col lg='12'>
+                <HeaderNavigation />
+            </Col>
+            <Col >
+                <ClientCard />
+            </Col>
             <Row>
-                <Col lg='12'>
-                    <HeaderNavigation />
+                <Col className="text-center mb-5">
+                    <div>
+                        <h2>Seleccione sus fecha</h2>
+                    </div>
+                </Col>
+
+                <Col lg='12' md='4' sm='3' className="text-center mb-5">
+                    <div className='header_location d-flex aling-items-center 
+                       gap-2'>
+
+                        <DateTime
+                            onStartDateChange={handleStartDateChange}
+                            onEndDateChange={handleEndDateChange}
+                        />
+                    </div>
+                </Col>
+            </Row>
+            
+            <Row>
+                <Col >
+                    <Factura startDate={startDate} endDate={endDate} />
                 </Col>
                 <Col>
                     <div className="payment-form-container">
@@ -122,7 +161,7 @@ const Total = () => {
                                         inputMode="numeric" // Mostrar teclado numérico en dispositivos móviles
                                     />
                                 </div>
-                                <button type="submit">Submit Payment</button>
+                                <button type="submit" >Submit Payment</button>
                             </form>
                             <div className="card-logos">
                                 <img src={visaLogo} alt="Visa" />
@@ -132,9 +171,7 @@ const Total = () => {
                         </div>
                     </div>
                 </Col>
-                <Col>                
-                    <Factura></Factura>
-                </Col>
+
             </Row>
 
         </Container>

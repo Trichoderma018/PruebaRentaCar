@@ -13,7 +13,7 @@ const ServicesList = () => {
       items: [
         'Seguro contra accidentes'
       ],
-      price: 'Incluido',
+      price: '0',
       level: 1
     },
     {
@@ -23,7 +23,7 @@ const ServicesList = () => {
         'Protección de llantas y cristales',
         'Protección para pérdida de llaves'
       ],
-      price: '$150/día',
+      price: '150',
       level: 2
     },
     {
@@ -36,7 +36,7 @@ const ServicesList = () => {
         'Protección de equipaje',
         'Protección de objetos personales'
       ],
-      price: '$200/día',
+      price: '200',
       level: 3
     }
   ];
@@ -60,6 +60,10 @@ const ServicesList = () => {
 
     fetchData();
   }, []); // Ejecutar solo una vez al montar el componente
+
+  const handleSelectPrice = (price) => {
+    localStorage.setItem('selectedPrice', price);
+  };
 
   if (loading) {
     return <h2>Cargando...</h2>;
@@ -141,9 +145,13 @@ const ServicesList = () => {
                   ))}
                 </div>
                 <CardText style={{ fontWeight: 'bold', fontSize: '1.2em', color: '#f9a826' }}>
-                  {pack.price}
+                  ${pack.price}/dia
                 </CardText>
-                <Button color="primary" className="mt-auto" style={{ backgroundColor: '#004080', border: 'none' }}>
+                <Button color="primary"
+                  className="mt-auto"
+                  style={{ backgroundColor: '#004080', border: 'none' }}
+                  onClick={() => handleSelectPrice(pack.price)}>
+
                   Seleccionar
                 </Button>
               </CardBody>

@@ -25,12 +25,8 @@ const HeroSlider = () => {
             <div className="slider_item slider_item-01 mt0">
                 <Container>
                     <div className="slider_content">
-                        <h4 className="text-light mb-3"> For Rent $80 Per Day</h4>
-                        <h1 className="text-light mb-4">Reserve Now and Get %50 Off</h1>
-
-                        <button className="btn reserve_btn mt-4">
-                            <Link to='/cars'>Reserve Now </Link>
-                        </button>
+                        <h4 className="text-light mb-3"> Renta al Mejor precio</h4>
+                        <h1 className="text-light mb-4">Reserva Ahora Con Nuestra Variedad de Autos</h1>
                     </div>
                 </Container>
             </div>
@@ -38,12 +34,8 @@ const HeroSlider = () => {
             <div className="slider_item slider_item-02 mt0">
                 <Container>
                     <div className="slider_content">
-                        <h4 className="text-light mb-3"> For Rent $80 Per Day</h4>
-                        <h1 className="text-light mb-4">Reserve Now and Get %50 Off</h1>
-
-                        <button className="btn reserve_btn mt-4">
-                            <Link to='/cars'>Reserve Now </Link>
-                        </button>
+                        <h4 className="text-light mb-3"> En Rent Car Service</h4>
+                        <h1 className="text-light mb-4">Contamos Con el Mejor Servicio Y Comodidad</h1>
                     </div>
                 </Container>
             </div>
@@ -51,12 +43,8 @@ const HeroSlider = () => {
             <div className="slider_item slider_item-03 mt0">
                 <Container>
                     <div className="slider_content">
-                        <h4 className="text-light mb-3"> For Rent $80 Per Day</h4>
-                        <h1 className="text-light mb-4">Reserve Now and Get %50 Off</h1>
-
-                        <button className="btn reserve_btn mt-4">
-                            <Link to='/cars'>Reserve Now </Link>
-                        </button>
+                        <h4 className="text-light mb-3"> Contamos Con Distinos Productos</h4>
+                        <h1 className="text-light mb-4">Llevate todo Con Nuestros Servicios y Extras</h1>
                     </div>
                 </Container>
             </div>

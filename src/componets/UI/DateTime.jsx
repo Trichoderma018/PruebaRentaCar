@@ -7,10 +7,22 @@ import { Container, Row, Col } from "reactstrap";
 import TextField from '@mui/material/TextField';  
 import '../../styles/date-time.css'
 
-export default function DateTime() {
+export default function DateTime({ onStartDateChange, onEndDateChange }) {
     const [startDate, setStartDate] = useState(dayjs());
     const [ endDate, setEndDate] = useState(dayjs());
 
+    useEffect(() => {
+        if (onStartDateChange) {
+            onStartDateChange(startDate);
+        }
+    }, [startDate, onStartDateChange]);
+
+    useEffect(() => {
+        if (onEndDateChange) {
+            onEndDateChange(endDate);
+        }
+    }, [endDate, onEndDateChange]);
+    
     const now = dayjs();
     
     return (

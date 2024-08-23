@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Container, Col, Row } from "reactstrap";
 import Helmet from "../componets/Helmet/HElmet.jsx";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
+import { fetchCarData } from '../data/carData'; 
 
 // Importa los íconos
 import StarIcon from '@mui/icons-material/Star';
@@ -22,6 +23,7 @@ const CarsDetails = () => {
     const [car, setCar] = useState(null);
     const [error, setError] = useState('');
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
         setLoading(true);
@@ -29,10 +31,9 @@ const CarsDetails = () => {
             const allCars = JSON.parse(localStorage.getItem('allCars'));
             if (allCars) {
 
-                console.log('Datos de coches en localStorage:', allCars); // Verifica los datos almacenados
-                console.log('Buscando coche con modelo:', marca); // Verifica el modelo que estás buscando
                 
                 const carItem = allCars.find(item => item.marca === marca);
+
                 if (carItem) {
                     setCar(carItem);
                 } else {
@@ -59,6 +60,11 @@ const CarsDetails = () => {
     if (!car) {
         return <p>No se encontraron detalles para este automóvil.</p>;
     }
+
+    const handleSelectCar = () => {
+        localStorage.setItem('selectedCar', car.marca); // Guarda el coche en localStorage
+        navigate('/serviceslist');
+    };
 
     return (
         <Helmet title={car.marca}>
@@ -146,8 +152,8 @@ const CarsDetails = () => {
                         <Col lg='3' className="extras">
                             <div className="booking-info mt-5" style={{ backgroundColor: "#f0f0f0" }}>
                                 <h6 className="rent_price">${car.tarifa_alquiler}.00 / Day</h6>
-                                <button className='header_btn btn mt-4' style={{ color: "#f9a826", backgroundColor: "#fff" }}>
-                                    <Link to={`/serviceslist`}>Seleccionar</Link>
+                                <button className='header_btn btn mt-4' style={{ color: "#f9a826", backgroundColor: "#fff" }} onClick={handleSelectCar}>
+                                    Seleccionar
                                 </button>
                             </div>
                         </Col>
